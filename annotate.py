@@ -148,14 +148,12 @@ def add_hot_spot_info(variant,db):
         mydocs = mycol.find(myquery).sort("start")
         if mydocs is not None:
             for doc in mydocs:
-                region = {}
-                region['begin'] = doc['start']
-                region['end'] = doc['end']
-                region['residue'] = doc['residue']
-                # region['ckb_count'] = get_num_ckb_gof_variants_between(gene, region['begin'], region['end'])
-                # region['cv_count'] = get_num_cv_nonbenign_between(gene, region['begin'], region['end'])
-                if region['begin'] <= variant['pdot_pos'] and region['end'] >= variant['pdot_pos']:
-                    hotspots.append(region)
+                if str.isdigit(doc['begin']) and str.isdigit(doc['end']):
+                    region = {}
+                    region['begin'] = int(doc['begin'])
+                    region['end'] = int(doc['end'])
+                    if region['begin'] <= variant['pdot_pos'] and region['end'] >= variant['pdot_pos']:
+                        hotspots.append(region)
     variant['hotspots'] = hotspots
 
 
