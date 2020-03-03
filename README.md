@@ -76,47 +76,47 @@ This project has three separate executables:
 }
 ```
 
-  ##Decision
+## Decision
   The main method in decision.py reads each annotated variant from mongodb and determines is reporting status.  
   Using the method is_tso_snv_reportable in reportable_variants.py, each variant flows through the decision tree and has these results added to it.
   Results are written to the file decisions.tsv.  The columns in this file are:
- ####gene
+ #### gene
  The HGNC identifier for the gene into which this variant falls, according to vep
-####cdot
+#### cdot
 The cdot for this variant, according to vep
-####pdot
+#### pdot
 The pdot for this variant, according to vep
-####gene_category
+#### gene_category
 The whether this gene is an oncogene or a tumor suppressor
-####mutation_type
+#### mutation_type
 The mutation type (missense, frameshift, etc.) as determined by vep
-####report_status
+#### report_status
 Final result of the decision tree:  should this variant be reported or not
-####reasons
+#### reasons
 List of reasons why it should be reported
-####lack_of_reasons
+#### lack_of_reasons
 List of reasons why it might not be reported(i.e. 'NO' steps in the decision tree)
-####is_protein_altering
+#### is_protein_altering
 Does this alteration change the protein sequence
-####in_clinvar
+#### in_clinvar
 Is the variant in clinvar, using the pDot as the key into the Clinvar mongodb collection
-####clinvar_significance
+#### clinvar_significance
 whether clinvar calls the variant benign or pathogenic
-####is_gain_of_function
+#### is_gain_of_function
 Does CKB call this variant GOF
-####is_loss_of_function
+#### is_loss_of_function
 Does CKB call this variant LOF
-####hotspots
+#### hotspots
 Does this varint fall into a hot spot region
-####predicted_deleterious
+#### predicted_deleterious
 Do Sift and Polyphen agree that this variant is deleterious (from vep)
-####is_truncating_variants
+#### is_truncating_variants
 Does this variant truncate the protein
 ####is_near_GOF_LOF_mutation
 Is this variant in a region of annotated GOF or LOF variants
-####omni_gene
+#### omni_gene
 What was the gene call from the OmniSeq pipeline
-####omni_cdot
+#### omni_cdot
 What was the cdot call from the OmniSeq pipeline
-####omni_pdot
+#### omni_pdot
 What was the pdot call from the OmniSeq pipeline
