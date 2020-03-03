@@ -106,22 +106,6 @@ def vep_variants_array_from_variants(var_list):
     return variants
 
 
-def old_get_vep_var_as_string(chr, pos, ref, alt):
-    s = '"'
-    s += chr
-    s +=  '  '
-    s += str(pos)
-    s += '  . '
-    if len(ref)==0:
-        ref = '.'
-    s += ref
-    s += ' '
-    if len(alt)==0:
-        alt = '.'
-    s += alt
-    s += ' . . ."'
-    return s
-
 
 def get_vep_var_as_string(chr, pos, ref, alt):
     s = '"'
