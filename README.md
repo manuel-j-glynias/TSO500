@@ -8,7 +8,7 @@ This project has three separate executables:
   
   ##Annotation:
   1) Data are read from the TSO500_UniqueVariants_runs1-6.csv file in the data directory using the read_tso_unique_variants method in the TSO500.py file.
-  2) A key is created for the variant, chr_pos_ref/alt.  If the mongoDB annvar collection contains a variant with this key, it is fetched
+  2) A key is created for the variant, chr_pos_ref/alt.  If the mongoDB ann_var collection contains a variant with this key, it is fetched
   3) If not, the variant is written into VEP input format (using get_vep_var_as_string) then sent to the VEP annotation service in batches of 100.
   4) The results contain arrays of transcript_consequences for each variant.  An attempt is made to find the consequence that most closely matches the variant decision already made by the OmniSeq pipeline using the method get_best_t_c
   5) The data from this transcript_consequence are added to the variant object, as is additional information from CKB about the gene and variant, and from ClinVar and HotSpot about the variant.
@@ -19,7 +19,7 @@ This project has three separate executables:
   
   in the TSO500_UniqueVariants_runs1-6.csv file.  Using the chromosome, pos, ref and alt gives the key:
   7_55259515_T/G
-  which after searching in mongoDB omni.acc-var gives:
+  which after searching in mongoDB omni.ann_var gives:
 ```
   {
   "HGNC_Symbol": "EGFR",
