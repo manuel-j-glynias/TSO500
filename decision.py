@@ -13,7 +13,7 @@ def main():
     var_list = TSO500.read_tso_unique_variants(path)
     outF = open("data/decisions.tsv", "w")
     h = "gene\tcdot\tpdot\tgene_category\tmutation_type\treport_status\treasons\tlack_of_reasons\t" \
-        "is_protein_altering\tin_clinvar\tclinvar_significance\t" \
+        "is_protein_altering\tin_clinvar\tis_clinvar_benign\tis_clinvar_pathogenic\tclinvar_explain\t" \
         "is_gain_of_function\tis_loss_of_function\thotspots\tpredicted_deleterious\tis_truncating_variants\tis_near_GOF_LOF_mutation\t" \
         "omni_gene\tomni_cdot\tomni_pdot"
     # print(h)
@@ -31,7 +31,7 @@ def main():
         is_tso_snv_reportable(annotated)
         s = f"{annotated['gene']}\t{annotated['cdot']}\t{annotated['pdot']}\t{annotated['gene_category']}\t{annotated['mutation_type']}\t" \
             f"{annotated['report_status']}\t{annotated['reasons']}\t{annotated['lack_of_reasons']}\t" \
-            f"{annotated['is_protein_altering']}\t{annotated['in_clinvar']}\t{annotated['clinvar_significance']}\t" \
+            f"{annotated['is_protein_altering']}\t{annotated['in_clinvar']}\t{annotated['is_clinvar_benign']}\t{annotated['is_clinvar_pathogenic']}\t{annotated['clinvar_explain']}\t" \
             f"{annotated['is_gain_of_function']}\t{annotated['is_loss_of_function']}\t{annotated['hotspots']}\t{annotated['predicted_deleterious']}\t" \
             f"{annotated['is_truncating_variants']}\t{annotated['is_near_GOF_LOF_mutation']}\t" \
             f"{annotated['HGNC_Symbol']}\t{annotated['omni_c_dot']}\t{annotated['omni_p_dot']}"

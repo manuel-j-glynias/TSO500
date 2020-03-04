@@ -164,8 +164,8 @@ def add_clinvar(variant, db):
     variant['is_clinvar_not_benign'] = '-'
     variant['is_clinvar_benign'] = '-'
     variant['is_clinvar_pathogenic'] = '-'
-
-    if 'pdot' in variant:
+    variant['clinvar_explain'] = '-'
+    if 'pdot' in variant and len(variant['pdot']) > 0:
         pdot = variant['pdot']
         mycol = db["clinvar"]
         myquery = {'gene': gene, 'pDot': pdot}

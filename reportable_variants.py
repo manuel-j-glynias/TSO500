@@ -134,6 +134,13 @@ def mark_as_activating(variant):
     variant['is_inactivating'] = False
     variant['report_status'] = 'reportable'
 
+def mark_status(variant):
+    if is_oncogene(variant):
+        mark_as_activating(variant)
+    elif is_tumor_suppressor(variant):
+        mark_as_inactivating()
+    else:
+        variant['report_status'] = 'reportable'
 
 
 def not_clinvar_pathogenic(variant):
@@ -154,16 +161,8 @@ def not_clinvar_pathogenic(variant):
                             mark_as_inactivating(variant)
                         else:
                             mark_as_not_reported(variant)
-
-
-def mark_status(variant):
-    if is_oncogene(variant):
-        mark_as_activating(variant)
-    elif is_tumor_suppressor(variant):
-        mark_as_inactivating()
-    else:
-        variant['report_status'] = 'reportable'
-
+            else:
+                mark_as_not_reported(variant)
 
 
 def mark_as_not_reported(variant):
@@ -177,11 +176,7 @@ def is_tso_snv_reportable(variant):
                 mark_as_not_reported(variant)
             else:
                 if is_clinvar_pathogenic(variant):
-                    variant['report_status'] = 'reportable'
-                    if is_oncogene(variant):
-                        mark_as_activating(variant)
-                    else:
-                        mark_as_inactivating(variant)
+                    mark_status(variant)
                 else:   #not clinvar pathogenic
                     not_clinvar_pathogenic(variant)
         else:

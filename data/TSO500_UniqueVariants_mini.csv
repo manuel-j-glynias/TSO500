@@ -1,0 +1,4 @@
+"HGNC_Symbol","p_dot","c_dot","Exon","Chr","Position","Ref","Alt","MutationType","NM","NP"
+"ANKRD26","","c.-140C>G",,"10","27389395","G","C","Promoter","NM_014915.2","NP_055730.2"
+"KEL","L597P","c.1790T>C","17","7","142640113","A","G","Substitution - Missense","NM_000420.2","NP_000411.1"
+"XIAP","E350del","c.1048_1050delGAG","3","X","123025155","GAG","","Deletion - In frame","NM_001167.3","NP_001158.2"
